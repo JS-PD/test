@@ -1,7 +1,6 @@
 from openai import OpenAI
 import streamlit as st
 
-OPENAI_API_KEY = "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"
 
 client = OpenAI(
     api_key = OPENAI_API_KEY,
