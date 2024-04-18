@@ -26,24 +26,25 @@ def get_audio():
     r = sr.Recognizer()
     with sr.Microphone() as source:
         print("say something")
-        #audio = r.listen(source)
+        audio = r.listen(source)
         said = " "
 
         try:
-            said = "안녕"
-            print("Your speech thinks like: ", said)
+            said = r.recognize_google(audio, language="ko-KR")
+            st.session_state.messages.append({"role": "user", "content": said})
+            with st.chat_message("user"):
+                st.write(said)
         except Exception as e:
             print("Exception: " + str(e))
     
     return said
 
-
-
-
 #speak("안녕하세요. 2초 후에 한국어로 말을 하시면 영어로 번역하여 말을합니다.") 
 
 
 st.set_page_config(page_title="DataFrame Demo", page_icon="📊")
+
+mic = st.button("mic")
 
 st.markdown("# ChatGPT Demo")
 st.sidebar.header("ChatGPT Demo")
@@ -69,6 +70,8 @@ if prompt := st.chat_input():
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.write(prompt)
+if mic:
+    get_audio()
 
 if openai_api_key:
     client = OpenAI(
