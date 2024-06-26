@@ -6,14 +6,13 @@ from dotenv import load_dotenv
 
 from google.cloud import storage
 from pytube import YouTube
-import IPython.display
 
 import streamlit as st
 
 # API 키 정보 로드
 load_dotenv()
 
-#os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "D:/download/psychic-expanse-425002-r3-42abbe4cda15.json"
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "secret.json"
 
 vertexai.init(project=os.environ['GOOGLE_CLOUD_PROJECT_ID'], location="asia-northeast3")
 
