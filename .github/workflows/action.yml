@@ -23,4 +23,4 @@ jobs:
         env:
           GOOGLE_APPLICATION_CREDENTIALS: $GITHUB_WORKSPACE/credentials.json
         run: |
-          python vertext_ai_videoy.py
+          python vertext_ai_video.py
