@@ -19,6 +19,13 @@ jobs:
         GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
       run: |
         echo "$GOOGLE_APPLICATION_CREDENTIALS" > $GITHUB_WORKSPACE/credentials.json
-        ls -l $GITHUB_WORKSPACE/credentials.json # 파일 존재 확인 로그 추가
+        ls -l $GITHUB_WORKSPACE/credentials.json # Verify file creation
+    - name: Run your Python script
+      env:
+        GOOGLE_APPLICATION_CREDENTIALS: $GITHUB_WORKSPACE/credentials.json
+      run: |
+        pip install google-cloud-storage  # Or your required library
+        python vertext_ai_video.py
+
 
 
