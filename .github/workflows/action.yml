@@ -3,28 +3,24 @@ name: Your Workflow Name
 on: [push]  # 원하는 트리거 이벤트 설정
 
 jobs:
-  your_job:
+  your-job-name:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.x'  # 사용할 Python 버전
-
-    - name: Create credentials file
-      env:
-        GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-      run: |
-        echo "$GOOGLE_APPLICATION_CREDENTIALS" > $GITHUB_WORKSPACE/credentials.json
-        ls -l $GITHUB_WORKSPACE/credentials.json # Verify file creation
-    - name: Run your Python script
-      env:
-        GOOGLE_APPLICATION_CREDENTIALS: $GITHUB_WORKSPACE/credentials.json
-      run: |
-        pip install google-cloud-storage  # Or your required library
-        python vertext_ai_video.py
-    - name: Install Vertex AI SDK
-      run: pip install google-cloud-aiplatform
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Create credentials file
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+        run: |
+          echo "$GOOGLE_APPLICATION_CREDENTIALS" > $GITHUB_WORKSPACE/credentials.json
+          ls -l $GITHUB_WORKSPACE/credentials.json # Verify file creation
+      - name: Install Vertex AI SDK
+        run: pip install google-cloud-aiplatform
+      - name: Run your Python script
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: $GITHUB_WORKSPACE/credentials.json
+        run: |
+          python vertext_ai_videoy.py
