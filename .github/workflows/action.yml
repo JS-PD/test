@@ -19,3 +19,6 @@ jobs:
         GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
       run: |
         echo "$GOOGLE_APPLICATION_CREDENTIALS" > $GITHUB_WORKSPACE/credentials.json
+        ls -l $GITHUB_WORKSPACE/credentials.json # 파일 존재 확인 로그 추가
+
+
