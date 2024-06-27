@@ -28,4 +28,4 @@ jobs:
       env:
         GOOGLE_APPLICATION_CREDENTIALS: ./credentials.json
       run: |
-        python your_script.py  # Python 스크립트 실행
+        python vertext_ai_video.py  # Python 스크립트 실행
