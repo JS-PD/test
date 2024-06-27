@@ -26,6 +26,5 @@ jobs:
       run: |
         pip install google-cloud-storage  # Or your required library
         python vertext_ai_video.py
-
-
-
+    - name: Install Vertex AI SDK
+      run: pip install google-cloud-aiplatform
