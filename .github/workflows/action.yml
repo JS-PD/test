@@ -22,6 +22,7 @@ jobs:
           pip install google-cloud-aiplatform
           pip install python-dotenv
           pip install pytube
+          pip install streamlit
         
       - name: Run your Python script
         env:
