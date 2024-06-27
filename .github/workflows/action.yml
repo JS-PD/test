@@ -16,4 +16,4 @@ jobs:
         json: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
     - name: Access Secrets
       run: |
-        echo "Secret Token : ${{ secrets.TEST_TOKEN }}
+        echo "Secret Token : ${{ secrets.GOOGLE_CLOUD_PROJECT_ID }}
