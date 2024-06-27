@@ -1,18 +1,31 @@
-name: Create JSON
+name: Your Workflow Name
 
-on:
-  push:
-    branches:
-      - main
+on: [push]  # 원하는 트리거 이벤트 설정
 
 jobs:
-  build:
+  your_job:
     runs-on: ubuntu-latest
     steps:
-      - name: Create JSON
-        run: |
-          echo '{ "name": "example", "version": "1.0.0" }' > data.json
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-      - name: Use JSON
-        run: |
-          cat data.json
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'  # 사용할 Python 버전
+
+    - name: Create credentials file
+      env:
+        GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+      run: |
+        echo "$GOOGLE_APPLICATION_CREDENTIALS" > credentials.json
+
+    - name: Install dependencies
+      run: |
+        pip install google-cloud-storage  # 필요한 라이브러리 설치
+
+    - name: Run your Python script
+      env:
+        GOOGLE_APPLICATION_CREDENTIALS: ./credentials.json
+      run: |
+        python your_script.py  # Python 스크립트 실행
