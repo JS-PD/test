@@ -12,7 +12,7 @@ import streamlit as st
 # API 키 정보 로드
 load_dotenv()
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "secret.json"
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "credentials.json"
 
 vertexai.init(project=os.environ['GOOGLE_CLOUD_PROJECT_ID'], location="asia-northeast3")
 
